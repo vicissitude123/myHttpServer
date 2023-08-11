@@ -9,7 +9,7 @@ enum HttpStatusCode {
     MovedPermanently = 301,
     MovedTemporarily = 302,
     BadRequest = 400,
-    NotFount = 404,
+    NotFound = 404,
 
 };
 
@@ -20,7 +20,7 @@ struct ResponseHeader {
 };
 
 // 定义一个函数指针, 用来组织要回复给客户端的数据块
-typedef int(*responseBody)(const char* fileName, struct Buffer* sendBuf, int socket);
+typedef void(*responseBody)(const char* fileName, struct Buffer* sendBuf, int socket);
 
 // 定义结构体
 struct HttpResponse {

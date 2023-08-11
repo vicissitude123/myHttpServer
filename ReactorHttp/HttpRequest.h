@@ -52,9 +52,9 @@ struct Buffer* sendBuf, int socket);
 // 处理http请求协议
 bool processHttpRequest(struct HttpRequest* request,  struct HttpResponse* response);
 
-int sendDir(const char* dirName, struct Buffer* sendBuf, int cfd);
+void sendDir(const char* dirName, struct Buffer* sendBuf, int cfd);
 
-int sendFile(const char* fileNmae, struct Buffer* sendBuf, int cfd);
+void sendFile(const char* fileNmae, struct Buffer* sendBuf, int cfd);
 // 解码字符串
 void decodeMsg(char* to, char* from);
 
