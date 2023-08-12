@@ -278,7 +278,7 @@ int sendDir(const char *dirName, int cfd) {
              "<tr><td><a href=\"%s\">%s</a></td><td>%ld</td></tr>", name, name, st.st_size);            
         }
         send(cfd, buf, strlen(buf), 0);  // 发送数据
-        
+        memset(buf, 0, sizeof(buf));
         free(namelist[i]);
     }
     sprintf(buf, "</table></body></html>");
@@ -325,7 +325,7 @@ const char* getFileType(const char *name) {
         return "video/x-msvideo";
     if (strcmp(dot, ".gif") == 0)
         return "image/gif";
-    if (strcmp(dot, ".mov") == 0 || strcmp(dot, ".qt"))
+    if (strcmp(dot, ".mov") == 0 || strcmp(dot, ".qt") == 0)
         return "video/quicktime";
     if (strcmp(dot, ".mpeg") == 0 || strcmp(dot, ".mpe") == 0)
         return "video/mpeg";
@@ -363,4 +363,5 @@ void decodeMsg(char* to, char* from) {
             *to = *from;
         }
     }
+    *to = '\0';
 }
